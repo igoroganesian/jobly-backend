@@ -52,7 +52,7 @@ router.post("/", ensureAdmin, async function (req, res, next) {
 
 router.get("/", async function (req, res, next) {
   const q = req.query;
-  // arrive as strings from querystring, but we want as int/bool
+  // arrive as strings from querystring, but we want int/bool
   if (q.minSalary !== undefined) q.minSalary = +q.minSalary;
   q.hasEquity = q.hasEquity === "true";
 
@@ -82,7 +82,6 @@ router.get("/:id", async function (req, res, next) {
   const job = await Job.get(req.params.id);
   return res.json({ job });
 });
-
 
 /** PATCH /[jobId]  { fld1, fld2, ... } => { job }
  *
